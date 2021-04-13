@@ -1,0 +1,40 @@
+{
+    "embedding": {
+        "order": [
+            "BoW"
+        ],
+        "BoW": {
+            "num_embeddings": "#ARGS.vocabulary_dims;",
+            "embedding_dim": "#ARGS.embedding_dims;",
+            "padding_idx": "#ARGS.vocabulary_dims;",
+            "scale_grad_by_freq": false,
+            "sparse": true
+        }
+    },
+    "trans_emb": {
+        "order": [
+            "R",
+            "relu",
+            "dropout"
+        ],
+        "R": {
+            "input_size": "#ARGS.embedding_dims;",
+            "output_size": "#ARGS.embedding_dims;",
+            "dropout": 0.2
+        },
+        "relu": {},
+        "dropout": {
+            "p": 0.2
+        }
+    },
+    "trans_gph": {
+        "order": [
+            "R"
+        ],
+        "R": {
+            "input_size": "#ARGS.embedding_dims;",
+            "output_size": "#ARGS.embedding_dims;",
+            "dropout": 0.2
+        }
+    }
+}
