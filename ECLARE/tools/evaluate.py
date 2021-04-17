@@ -44,13 +44,8 @@ def main(targets_label_file, train_label_file, predictions_file, A, B, docs, lbl
     predicted_labels = _remove_overlap(
         load_npz(predictions_file+'.npz').tolil(),
         docs, lbls)
-<<<<<<< HEAD
     rec = xc_metrics.recall(predicted_labels, true_labels, k=10)[-1]*100
     print("R@10=%0.2f" % (rec))
-=======
-    rec = xc_metrics.recall(predicted_labels, true_labels, k=20)[-1]*100
-    print("R@20=%0.2f" % (rec))
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     args = acc.eval(predicted_labels, 5)
     print(xc_metrics.format(*args))
 

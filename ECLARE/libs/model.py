@@ -3,10 +3,7 @@ import xclib.evaluation.xc_metrics as xc
 from .model_base import ModelBase
 import libs.features as feat
 import scipy.sparse as sp
-<<<<<<< HEAD
 from sklearn.preprocessing import normalize
-=======
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 import numpy as np
 import torch
 import time
@@ -26,11 +23,7 @@ class ModelECLAREpp(ModelBase):
     def get_lbl_cent(self, dataset):
         encoder = self.net._get_encoder()
         dataset.mode = "test"
-<<<<<<< HEAD
         docs = normalize(self._doc_embed(dataset, 0, encoder, True))
-=======
-        docs = self._doc_embed(dataset, 0, encoder, True)
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         dataset.mode = "train"
         y = dataset.labels.Y
         lbl_cnt = y.transpose().dot(docs)
@@ -72,17 +65,10 @@ class ModelECLAREfe(ModelBase):
     def get_lbl_cent(self, dataset):
         encoder = self.net._get_encoder()
         dataset.mode = "test"
-<<<<<<< HEAD
         docs = normalize(self._doc_embed(dataset, 0, encoder, True))
         dataset.mode = "train"
         y = dataset.labels.Y
         lbl_cnt = normalize(y.transpose().dot(docs))
-=======
-        docs = self._doc_embed(dataset, 0, encoder, True)
-        dataset.mode = "train"
-        y = dataset.labels.Y
-        lbl_cnt = y.transpose().dot(docs)
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         return lbl_cnt
     
     def predict(self, data_dir, model_dir, dataset, data=None,

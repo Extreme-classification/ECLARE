@@ -166,11 +166,7 @@ class ECLAREh(GraphBase):
         self.sparse_emb = False
         self.sparse_gph = False
         self.graph_train = None
-<<<<<<< HEAD
         self.use_bias = False
-=======
-        self.use_bias = True
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         self.fixed_lbs = params.freeze_embeddings
         self.lbs_params = None
         self.offset = 0
@@ -307,11 +303,7 @@ class ECLAREt(ECLAREh):
         super(ECLAREt, self)._set_params(params)
         self.sparse_clf = True
         self.sparse_emb = True
-<<<<<<< HEAD
         self.use_bias = False
-=======
-        self.use_bias = True
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         self.offset = 1
 
     def _fixed_forward(self, batch_data):

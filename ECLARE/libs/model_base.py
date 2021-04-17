@@ -79,14 +79,10 @@ class ModelBase:
             sub_mat = self.net.traverse_graph(shorty[start: end])
             batch_pred_time += time.time() - begin
             mats.append(retain_topk(sub_mat, k=k))
-<<<<<<< HEAD
         t_shorty = sp.vstack(mats).tocsr()
         print("After traversing", np.min(t_shorty.data), np.max(t_shorty.data))
         shorty = shorty.multiply(0.5) + t_shorty.multiply(0.5)
         shorty = shorty.tocsr()
-=======
-        shorty = sp.vstack(mats).tocsr()
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         print("After traversing", np.min(shorty.data), np.max(shorty.data))
         shorty.data[:] = np.log(shorty.data)
         return shorty, batch_pred_time
@@ -101,11 +97,7 @@ class ModelBase:
 
         else:
             return self._create_dl(_dataset, batch_size=self.batch_size[d],
-<<<<<<< HEAD
                                    num_workers=6, shuffle=False, traverse=False,
-=======
-                                   num_workers=6, shuffle=False,
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
                                    mode=mode, use_shortlist=np.bool(d > 0))
 
     def _prep_ds_for_depth(self, depth, train_dataset, valid_dataset):

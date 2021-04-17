@@ -24,11 +24,7 @@
         "b_factors": [
             17
         ],
-<<<<<<< HEAD
         "beam_size": 20,
-=======
-        "beam_size": 10,
->>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "cluster_method": "AugParabel",
         "num_trees": 3,
         "optim": "Adam",
