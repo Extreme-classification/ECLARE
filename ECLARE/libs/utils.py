@@ -6,10 +6,16 @@ import json
 import os
 import re
 
+<<<<<<< HEAD
+def normalize_graph(mat, axis=1):
+    diags = mat.diagonal()
+    print("Zero Diagonals:", np.sum(diags == 0))
+=======
 
 def normalize_graph(mat, axis=1):
     diags = mat.diagonal()
     print("Zero Diagonals:", np.sum(diags==0))
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     col_nnz = np.sqrt(1/np.ravel(mat.sum(axis=0)))
     row_nnz = np.sqrt(1/np.ravel(mat.sum(axis=1)))
     c_diags = sp.diags(col_nnz)
@@ -18,6 +24,10 @@ def normalize_graph(mat, axis=1):
     mat.eliminate_zeros()
     return mat
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 def load_overlap(data_dir, valid_labels, filter_label_file='filter_labels'):
     docs = np.asarray([])
     lbs = np.asarray([])
@@ -65,6 +75,10 @@ def resolve_schema_args(jfile, ARGS):
         jfile = jfile.replace(replace, to)
     return jfile
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 def fetch_json(file, ARGS):
     with open(file, encoding='utf-8') as f:
         file = ''.join(f.readlines())
@@ -93,11 +107,19 @@ class PrunedWalk(graph.RandomWalk):
         mats = []
         pruned_edges = 0
         for p_idx, idx in enumerate(np.arange(0, n_lbs, b_size)):
+<<<<<<< HEAD
+            if p_idx % 50 == 0:
+                print("INFO:WALK: completed [ %d/%d ]" % (idx, n_lbs))
+            start, end = idx, min(idx+b_size, n_lbs)
+            cols, data = graph._random_walk(q_rng, q_lbl, l_rng, l_qry, walk_to,
+                                      p_reset, start=start, end=end)
+=======
             if p_idx%50 == 0:
                 print("INFO:WALK: completed [ %d/%d ]"%(idx, n_lbs))
             start, end = idx, min(idx+b_size, n_lbs)
             cols, data = graph._random_walk(q_rng, q_lbl, l_rng, l_qry, walk_to,
                                             p_reset, start=start, end=end)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
             rows = np.arange(end-start).reshape(-1, 1)
             rows = np.repeat(rows, walk_to, axis=1).flatten()
             mat = sp.coo_matrix((data, (rows, cols)), dtype=np.float32,
@@ -122,7 +144,11 @@ class PrunedWalk(graph.RandomWalk):
             mat.setdiag(_diag, k=start)
             mats.append(mat)
             del rows, cols
+<<<<<<< HEAD
+        print("INFO:WALK: completed [ %d/%d ]" % (n_lbs, n_lbs))
+=======
         print("INFO:WALK: completed [ %d/%d ]"%(n_lbs, n_lbs))
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         mats = sp.vstack(mats).tocsr()
         rows, cols = mats.nonzero()
         r_mat = sp.coo_matrix((mats.data, (rows, cols)), dtype=np.float32,
@@ -131,8 +157,16 @@ class PrunedWalk(graph.RandomWalk):
         r_mat = xs._map(r_mat, self.valid_labels, axis=1, shape=r_mat.shape)
         return r_mat.tocsr()
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 def print_stats(mat, k=10):
     _mat = mat.copy()
     _mat.__dict__['data'][:] = 1
     freqs = _mat.sum(axis=1)
+<<<<<<< HEAD
     print(np.max(freqs), np.min(freqs), np.std(freqs))
+=======
+    print(np.max(freqs), np.min(freqs), np.std(freqs))
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d

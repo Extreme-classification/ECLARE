@@ -24,7 +24,11 @@
         "b_factors": [
             17
         ],
+<<<<<<< HEAD
+        "beam_size": 30,
+=======
         "beam_size": 80,
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "cluster_method": "AugParabel",
         "num_trees": 3,
         "optim": "Adam",
@@ -52,6 +56,10 @@
         "top_k": 10,
         "verbose": 500,
         "traverse": true,
+<<<<<<< HEAD
+        "propagate": 10,
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "graph_comp": [
             "trn_X_Y.txt"
         ],
@@ -63,7 +71,11 @@
         "v_lbl_fts": "#ARGS.data_dir;/#ARGS.dataset;/g-xml_data/v_lbs_fts_split.txt"
     },
     "ECLARE-S": {
+<<<<<<< HEAD
+        "freeze_embeddings": false,
+=======
         "freeze_embeddings": true,
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "dropout": 0.2,
         "batch_sizes": [
             255

@@ -1,6 +1,16 @@
 """
 Modified from DECAF:
+<<<<<<< HEAD
+@InProceedings{Mittal21,
+    author = "Mittal, A. and Dahiya, K. and Agrawal, S. and Saini, D. and Agarwal, S. and Kar, P. and Varma, M.",
+    title = "DECAF: Deep Extreme Classification with Label Features",
+    booktitle = "Proceedings of the ACM International Conference on Web Search and Data Mining",
+    month = "March",
+    year = "2021",
+    }
+=======
 #NOTE: Citation goes here
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 """
 import os
 import sys
@@ -44,7 +54,11 @@ def load_embeddings(params):
                                 dtype=np.float32)
         weight = torch.from_numpy(embeddings)
         torch.nn.init.kaiming_uniform_(weight)
+<<<<<<< HEAD
+        embeddings = {'weight': weight}
+=======
         embeddings = {'weight': torch.from_numpy(embeddings)}
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     return embeddings
 
 
@@ -96,8 +110,13 @@ def get_documents(model, params):
     """Generates document embeddings
     Parameters
     ----------
+<<<<<<< HEAD
+    model: ECLARE
+        train this model (typically ECLARE model)
+=======
     model: DECAF
         train this model (typically DECAF model)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     params: NameSpace
         parameter of the model
     """
@@ -124,8 +143,13 @@ def get_labels(model, params):
     """Generates label embeddings
     Parameters
     ----------
+<<<<<<< HEAD
+    model: ECLARE
+        train this model (typically ECLARE model)
+=======
     model: DECAF
         train this model (typically DECAF model)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     params: NameSpace
         parameter of the model
     """

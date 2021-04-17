@@ -166,10 +166,16 @@ class construct_collate_fn:
 
         if self.mode == "train":
             Y = sp.vstack(list(map(lambda x: x[1], batch))).tocsc()
+<<<<<<< HEAD
+            # print(Y.shape)
+            Y = np.take_along_axis(Y, Y_s.numpy(), axis=1).todense()
+            b_data['Y'] = torch.from_numpy(Y).type(torch.FloatTensor)
+=======
             indptr, indices = Y.indptr, Y.indices
             b_data['Y'] = _paddedbatch(map(lambda x: indices[x[0]:x[1]],
                                            zip(indptr[:-1], indptr[1:])),
                                            self.n_lbs, dtype=torch.LongTensor)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         return b_data
 
     def collate_fn_shorty(self, batch):

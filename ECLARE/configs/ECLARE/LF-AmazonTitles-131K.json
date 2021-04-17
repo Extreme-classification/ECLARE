@@ -24,7 +24,11 @@
         "b_factors": [
             15
         ],
+<<<<<<< HEAD
+        "beam_size": 50,
+=======
         "beam_size": 100,
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "cluster_method": "AugParabel",
         "num_trees": 3,
         "optim": "Adam",
@@ -52,6 +56,10 @@
         "top_k": 10,
         "verbose": 500,
         "traverse": true,
+<<<<<<< HEAD
+        "propagate": 10,
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         "graph_comp": [
             "trn_X_Y.txt"
         ],
@@ -69,7 +77,11 @@
             255
         ],
         "depth_lrs": [
+<<<<<<< HEAD
+            0.005
+=======
             0.01
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         ],
         "call_backs": [
             20
@@ -92,8 +104,13 @@
             255
         ],
         "depth_lrs": [
+<<<<<<< HEAD
+            0.004,
+            0.004
+=======
             0.008,
             0.008
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
         ],
         "call_backs": [
             10,

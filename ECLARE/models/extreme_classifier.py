@@ -16,6 +16,10 @@ import copy
 import os
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 class ECLAREBase(nn.Module):
     def __init__(self, params):
         super(ECLAREBase, self).__init__()
@@ -69,6 +73,12 @@ class ECLAREBase(nn.Module):
             print("Avg: labels", trn_y.nnz/trn_y.shape[0])
             trn_y = trn_y.dot(diag).tocsr()
             trn_y.eliminate_zeros()
+<<<<<<< HEAD
+            yf = None
+            if os.path.exists(params.embeddings):
+                emb = torch.load(params.embeddings)['weight'].cpu().numpy()
+                yf = normalize(self.lblft_npz.dot(emb))
+=======
             if os.path.exists(params.embeddings):
                 valid_wrd = np.loadtxt(params.feature_indices, dtype=int)
                 yf = du.read_sparse_file(
@@ -79,6 +89,7 @@ class ECLAREBase(nn.Module):
             else:
                 yf = None
 
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
             graph = PrunedWalk(trn_y, yf=yf).simulate(
                 params.walk_len, params.p_reset,
                 params.top_k, max_dist=params.prune_max_dist)
@@ -91,7 +102,11 @@ class ECLAREBase(nn.Module):
         else:
             graph = sp.load_npz(os.path.join(
                 params.model_dir, params.graph_name))
+<<<<<<< HEAD
+        return graph
+=======
         return normalize_graph(graph)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 
     def build(self, lbl_cnt=None, label_idx=None, verbose_lbs=None, model_dir=None):
         n_gph = normalize_graph(self.graph_npz)
@@ -99,7 +114,11 @@ class ECLAREBase(nn.Module):
             if self.params.cluster_method == 'AugParabel':
                 print("Augmenting graphs")
                 if isinstance(lbl_cnt, np.ndarray):
+<<<<<<< HEAD
+                    lbl_cnt = n_gph.dot(normalize(lbl_cnt))
+=======
                     lbl_cnt = n_gph.dot(lbl_cnt)
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
                 elif sp.issparse(lbl_cnt):
                     print("Avg features", lbl_cnt.nnz / lbl_cnt.shape[0])
                     lbl_cnt = n_gph.dot(lbl_cnt).tocsr()

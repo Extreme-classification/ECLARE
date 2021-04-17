@@ -32,7 +32,11 @@ get_obj() {
     echo $(python3 -c "import json; print(json.load(open('${model_type}/$dataset.json'))['DEFAULT']['$1'])")
 }
 num_trees=$(get_obj "num_trees")
+<<<<<<< HEAD
+num_labels=$(head -1 $trn_lb_file | awk -F ' ' '{print $2}')
+=======
 num_labels=$(head -1 $train_file | awk -F ' ' '{print $3}')
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 
 create_splits() {
     echo "Creating data splits.."
@@ -95,9 +99,12 @@ train() {
     model_fname=$3
     mkdir -p $model_dir/$model_version
     mkdir -p $result_dir/$model_version
+<<<<<<< HEAD
+=======
     # cp -r ${model_dir}/surrogate/label_centroids.npy \
     #     ${model_dir}/$model_version/label_centroids.npy
 
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
     PARAMS="--model_fname $model_fname \
         --data_dir ${data_dir} \
         --model_dir ${model_dir}/$model_version \
@@ -113,7 +120,11 @@ train() {
     python -u ${PROGRAMS_DIR}/main.py $PARAMS --mode predict 2>&1 | tee $log_pr_file
 }
 
+<<<<<<< HEAD
+module1
+=======
 # module1
+>>>>>>> 49fc87b7eff8ac633cc3a851c34d7dfc3a6c7d6d
 for ((tree_idx = ${num_trees}; tree_idx > 0; tree_idx--)); do
     train $tree_idx "XC/${tree_idx}" ${model_type}
 done
