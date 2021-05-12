@@ -61,9 +61,6 @@ convert() {
     perl ${PROGRAMS_DIR}/tools/convert_format.pl $4 $5 $6
 }
 
-num_trees=$(get_obj "num_trees")
-num_labels=$(head -1 $trn_lb_file | awk -F ' ' '{print $2}')
-
 if [ ! -e "${trn_ft_file}" ]; then
     convert ${train_file} ${trn_ft_file} ${trn_lb_file} ${test_file} ${tst_ft_file} ${tst_lb_file}
 fi
@@ -73,6 +70,9 @@ if [ ! -e "${meta_data_folder}/v_lbs_fts_split.txt" ]; then
     create_splits ${data_dir}/${dataset} ${trn_ft_file} ${trn_lb_file} \
         "${data_dir}/${dataset}/Yf.txt" ${meta_data_folder}
 fi
+
+num_trees=$(get_obj "num_trees")
+num_labels=$(head -1 $trn_lb_file | awk -F ' ' '{print $2}')
 
 module1() {
     mkdir -p $model_dir/surrogate
