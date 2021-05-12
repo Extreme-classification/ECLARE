@@ -31,8 +31,6 @@ mkdir -p "${meta_data_folder}"
 get_obj() {
     echo $(python3 -c "import json; print(json.load(open('${model_type}/$dataset.json'))['DEFAULT']['$1'])")
 }
-num_trees=$(get_obj "num_trees")
-num_labels=$(head -1 $trn_lb_file | awk -F ' ' '{print $2}')
 
 create_splits() {
     echo "Creating data splits.."
@@ -62,6 +60,9 @@ convert() {
     perl ${PROGRAMS_DIR}/tools/convert_format.pl $1 $2 $3
     perl ${PROGRAMS_DIR}/tools/convert_format.pl $4 $5 $6
 }
+
+num_trees=$(get_obj "num_trees")
+num_labels=$(head -1 $trn_lb_file | awk -F ' ' '{print $2}')
 
 if [ ! -e "${trn_ft_file}" ]; then
     convert ${train_file} ${trn_ft_file} ${trn_lb_file} ${test_file} ${tst_ft_file} ${tst_lb_file}
