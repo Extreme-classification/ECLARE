@@ -219,7 +219,8 @@ class build_tree:
         depth = 0
         T_verb_lbl = verbose_label_index[0].size
         while True:
-            n_child_nodes = 2**self.b_factors[depth]
+            orignal_num_nodes = 2**self.b_factors[depth]
+            n_child_nodes = orignal_num_nodes
             if self.num_labels/n_child_nodes < T_verb_lbl or \
                     len(self.b_factors) == 1:
                 if T_verb_lbl > 0:
@@ -235,7 +236,7 @@ class build_tree:
             else:
                 clusters, verbose_label_index = cluster_labels(
                     labels, clusters, verbose_label_index,
-                    n_child_nodes, splitter)
+                    orignal_num_nodes, splitter)
                 if depth == len(self.b_factors):
                     clusters, verbose_label_index = _merge_tree(
                         clusters, verbose_label_index, True)
