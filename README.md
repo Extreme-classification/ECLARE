@@ -48,3 +48,7 @@ chmod +x run_ECLARE.sh
 e.g.
 ./run_ECLARE.sh 0 ECLARE LF-AmazonTitles-131K ECLARE_RUN
 ```
+
+#### YOU MAY ALSO LIKE
+- [DeepXML: A Deep Extreme Multi-Label Learning Framework Applied to Short Text Documents](https://github.com/Extreme-classification/deepxml)
+- [DECAF: Deep Extreme Classification with Label Features](https://github.com/Extreme-classification/DECAF)
